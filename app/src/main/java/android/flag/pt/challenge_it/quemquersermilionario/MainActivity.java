@@ -1,5 +1,6 @@
 package android.flag.pt.challenge_it.quemquersermilionario;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -18,7 +19,9 @@ public class MainActivity extends ActionBarActivity {
         Button btnJogar = (Button)findViewById(R.id.btnJogar);
         btnJogar.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
+
+                startService(new Intent(getApplicationContext(), JogarIntentService.class));
 
             }
         });
