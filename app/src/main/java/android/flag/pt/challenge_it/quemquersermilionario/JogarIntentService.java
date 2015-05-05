@@ -34,6 +34,7 @@ public class JogarIntentService extends IntentService {
     public JogarIntentService() {
 
         super("JogarIntentService");
+        this.manager = new JogarManager(this);
     }
 
     @Override
@@ -79,10 +80,6 @@ public class JogarIntentService extends IntentService {
                     questionList.add(new Question(id,question,answersList));
 
                 }
-
-
-
-
 
             /**
              * Save persistently the temperature in database.

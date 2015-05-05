@@ -25,23 +25,23 @@ public class JogarManager {
     public void save(ArrayList<Question>questionList)
     {
         ContentValues values = new ContentValues();
-        values.put(JogarContract.VALUE, temperature.getValue());
-        _context.getContentResolver().insert(TemperatureProvider.CONTENT_URI, values);
+        values.put(QuestionContract.QUESTION, Question.getValue());
+        _context.getContentResolver().insert(QuestionProvider.CONTENT_URI, values);
     }
 
     /**
      * Get all temperatures stored in database.
      * @return list of temperatures
      */
-    public ArrayList<Jogar> getAll()
+    public ArrayList<Question> getAll()
     {
-        Cursor cursor = _context.getContentResolver().query(TemperatureProvider.CONTENT_URI, null, null, null, null);
-        ArrayList<Jogar> temperatures = new ArrayList<>();
+        Cursor cursor = _context.getContentResolver().query(QuestionProvider.CONTENT_URI, null, null, null, null);
+        ArrayList<Question> questions = new ArrayList<>();
         while(cursor.moveToNext())
         {
-            temperatures.add(new Jogar(cursor.getDouble(cursor.getColumnIndex(TemperatureContract.VALUE))));
+            questions.add(new Question(cursor.getString(cursor.getColumnIndex(QuestionContract.QUESTION))));
         }
         cursor.close();
-        return temperatures;
+        return questions;
     }
 }
