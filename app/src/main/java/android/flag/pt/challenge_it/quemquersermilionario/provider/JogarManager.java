@@ -3,6 +3,7 @@ package android.flag.pt.challenge_it.quemquersermilionario.provider;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.flag.pt.challenge_it.quemquersermilionario.Model.Answer;
 import android.flag.pt.challenge_it.quemquersermilionario.Model.Question;
 
 import java.util.ArrayList;
@@ -24,9 +25,26 @@ public class JogarManager {
      */
     public void save(ArrayList<Question>questionList)
     {
-        ContentValues values = new ContentValues();
-        values.put(QuestionContract.QUESTION, Question.getValue());
-        _context.getContentResolver().insert(QuestionProvider.CONTENT_URI, values);
+
+
+        for( Question q : questionList){
+            ContentValues values = new ContentValues();
+            values.put(QuestionContract.ID_QUESTION, q.getId());
+            values.put(QuestionContract.QUESTION, q.getQuestion());
+
+
+            for( Answer y : q.getAnswers()){
+
+                values.put(AnswerContract.ID_ANSWER, y.getId());
+                values.put(AnswerContract.ANSWER, y.getAnswer());
+                values.put(AnswerContract.CORRECT, y.getCorrect());
+
+            }
+            _context.getContentResolver().insert(QuestionContract.CONTENT_PROVIDER, values);
+
+
+        }
+
     }
 
     /**
@@ -35,13 +53,31 @@ public class JogarManager {
      */
     public ArrayList<Question> getAll()
     {
-        Cursor cursor = _context.getContentResolver().query(QuestionProvider.CONTENT_URI, null, null, null, null);
+        Cursor questionsCursor = _context.getContentResolver().query(QuestionContract.CONTENT_PROVIDER, null, null, null, null);
         ArrayList<Question> questions = new ArrayList<>();
-        while(cursor.moveToNext())
+        while(questionsCursor.moveToNext())
         {
-            questions.add(new Question(cursor.getString(cursor.getColumnIndex(QuestionContract.QUESTION))));
+            Cursor answersCursor = _context.getContentResolver().query(AnswerContract.CONTENT_PROVIDER, null, null, null, null);
+            ArrayList<Answer> answers = new ArrayList<>();
+            while(answersCursor.moveToNext())
+            {
+                answers.add(new Answer(answersCursor.getString(answersCursor.getColumnIndex(AnswerContract.ID_ANSWER)),
+                        answersCursor.getString(answersCursor.getColumnIndex(AnswerContract.ANSWER)),
+                        answersCursor.getInt(answersCursor.getColumnIndex(AnswerContract.CORRECT)) == 1
+                ));
+
+
+            }
+            answersCursor.close();
+            questions.add(new Question(questionsCursor.getString(questionsCursor.getColumnIndex(QuestionContract.ID_QUESTION)),
+                            questionsCursor.getColumnIndex(QuestionContract.ID_QUESTION))
+                    ));
         }
-        cursor.close();
+        questionsCursor.close();
+
         return questions;
+
+
+
     }
 }

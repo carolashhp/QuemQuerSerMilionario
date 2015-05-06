@@ -1,4 +1,3 @@
-<<<<<<< Original
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="android.flag.pt.challenge_it.quemquersermilionario" >
@@ -26,37 +25,17 @@
         </service>
 
         <provider
-            android:name=".provider.JogarProvider"
-            android:authorities="android.flag.pt.challenge_it.quemquersermilionario.provider.jogarprovider"
-            android:enabled="true"
-            android:exported="false" >
-        </provider>
-        <provider
-            android:name=".provider.QuestionProvider"
-            android:authorities="package android.flag.pt.challenge_it.quemquersermilionario.provider"
-            android:enabled="true"
-            android:exported="false" >
-        </provider>
-        <provider
             android:name=".provider.AnswerProvider"
             android:authorities="android.flag.pt.challenge_it.quemquersermilionario.provider"
             android:enabled="true"
             android:exported="false" >
         </provider>
-    </application>
-
-</manifest>
-
-=======
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" >
-
-    <application>
-        <provider android:name="android.flag.pt.challenge_it.quemquersermilionario.provider.AnswerProvider"
-            android:authorities="android.flag.pt.challenge_it.quemquersermilionario.provider.AnswerProvider"
-            android:exported="false"
-            android:enabled="true" >
+        <provider
+            android:name=".provider.QuestionProvider"
+            android:authorities="android.flag.pt.challenge_it.quemquersermilionario.provider.QuestionProvider"
+            android:enabled="true"
+            android:exported="false" >
         </provider>
     </application>
 
 </manifest>
->>>>>>> Added
