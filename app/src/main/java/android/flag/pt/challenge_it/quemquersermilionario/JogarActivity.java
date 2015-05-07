@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CursorAdapter;
 import android.widget.TextView;
 
@@ -32,6 +33,33 @@ public class JogarActivity extends ListActivity {
          * @pt Criar uma Asynctask para obter os dados da base de dados e mostrar na vista.
          */
         new JogarAsyncTask().execute();
+
+        Button btnCinco = (Button)findViewById(R.id.btnCinco);
+        Button btnPublico = (Button)findViewById(R.id.btnPublico);
+        Button btnTelefone = (Button)findViewById(R.id.btnTelefone);
+
+
+        btnCinco.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        btnPublico.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        btnTelefone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
     }
 
     /**
