@@ -3,9 +3,7 @@ package android.flag.pt.challenge_it.quemquersermilionario.provider;
 import android.net.Uri;
 import android.provider.BaseColumns;
 
-/**
- * Created by Manas Luis on 05-05-2015.
- */
+
 public class AnswerContract {
     // table name
     public static final String TABLE = "ANSWER";
