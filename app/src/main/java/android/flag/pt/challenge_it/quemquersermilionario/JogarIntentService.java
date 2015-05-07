@@ -53,7 +53,6 @@ public class JogarIntentService extends IntentService {
                 res += line;
 
             JSONArray response = new JSONArray(res);
-            //double temp = response.getJSONObject("main").getDouble("temp");
 
             ArrayList<Question> questionList = new ArrayList<>();
 

@@ -8,9 +8,7 @@ import android.flag.pt.challenge_it.quemquersermilionario.Model.Question;
 
 import java.util.ArrayList;
 
-/**
- * Created by Formando FLAG on 04-05-2015.
- */
+
 public class JogarManager {
     private Context _context;
 
@@ -19,10 +17,7 @@ public class JogarManager {
         _context = context;
     }
 
-    /**
-     * Store temperature in database.
-     * @param temperature
-     */
+
     public void save(ArrayList<Question>questionList)
     {
 
@@ -34,6 +29,18 @@ public class JogarManager {
 
 
             for( Answer y : q.getAnswers()){
+
+                values.put(AnswerContract.ID_ANSWER, y.getId());
+                values.put(AnswerContract.ANSWER, y.getAnswer());
+                values.put(AnswerContract.CORRECT, y.getCorrect());
+
+                values.put(AnswerContract.ID_ANSWER, y.getId());
+                values.put(AnswerContract.ANSWER, y.getAnswer());
+                values.put(AnswerContract.CORRECT, y.getCorrect());
+
+                values.put(AnswerContract.ID_ANSWER, y.getId());
+                values.put(AnswerContract.ANSWER, y.getAnswer());
+                values.put(AnswerContract.CORRECT, y.getCorrect());
 
                 values.put(AnswerContract.ID_ANSWER, y.getId());
                 values.put(AnswerContract.ANSWER, y.getAnswer());
@@ -70,8 +77,7 @@ public class JogarManager {
             }
             answersCursor.close();
             questions.add(new Question(questionsCursor.getString(questionsCursor.getColumnIndex(QuestionContract.ID_QUESTION)),
-                            questionsCursor.getColumnIndex(QuestionContract.ID_QUESTION))
-                    ));
+                      questionsCursor.getString(questionsCursor.getColumnIndex(QuestionContract.QUESTION));
         }
         questionsCursor.close();
 

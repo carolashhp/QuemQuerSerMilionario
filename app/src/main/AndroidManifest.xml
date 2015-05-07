@@ -36,6 +36,11 @@
             android:enabled="true"
             android:exported="false" >
         </provider>
+
+        <activity
+            android:name=".JogarActivity"
+            android:label="@string/title_activity_jogar" >
+        </activity>
     </application>
 
 </manifest>

@@ -22,11 +22,11 @@ public class JogarHelper extends SQLiteOpenHelper {
         String sql = "CREATE TABLE IF NOT EXISTS " + QuestionContract.TABLE + " (" + columns + ")";
         sqLiteDatabase.execSQL(sql);
 
-        String answerscolumns = AnswerContract.ID_ANSWER + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+        String answersColumns = AnswerContract.ID_ANSWER + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 AnswerContract.ABC + " TEXT NOT NULL, " +
                 AnswerContract.ANSWER + " TEXT NOT NULL, " + AnswerContract.CORRECT + " INTEGER NOT NULL" ;
 
-        String sql = "CREATE TABLE IF NOT EXISTS " + AnswerContract.TABLE + " (" + columns + ")";
+        String answersSql = "CREATE TABLE IF NOT EXISTS " + AnswerContract.TABLE + " (" + columns + ")";
         sqLiteDatabase.execSQL(sql);
     }
 

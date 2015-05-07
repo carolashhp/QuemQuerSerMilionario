@@ -23,7 +23,6 @@ public class AnswerProvider extends ContentProvider {
         // Matcher for see if the type is one element or all elements.
         private static UriMatcher URIMATCHER = new UriMatcher(UriMatcher.NO_MATCH);
         private static final int ANSWER_ID  = 1;
-
         private static final int ANSWER_ALL = 2;
 
         private static final String MIME_ALL = "vnd.android.cursor.dir/vnd.android.flag.pt.challenge_it.quemquersermilionario.provider." + AnswerContract.TABLE;
@@ -44,7 +43,7 @@ public class AnswerProvider extends ContentProvider {
 
         @Override
         public boolean onCreate() {
-        helper = new AnswerHelper(getContext());
+        helper = new JogarHelper(getContext());
         return true;
     }
 
