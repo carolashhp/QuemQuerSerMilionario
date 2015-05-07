@@ -13,7 +13,7 @@ import android.flag.pt.challenge_it.quemquersermilionario.Model.Answer;
 import android.net.Uri;
 
 public class AnswerProvider extends ContentProvider {
-    {
+
         // provider identifier
         private static final String AUTHORITY = "android.flag.pt.challenge_it.quemquersermilionario.provider.answerprovider";
 
@@ -23,15 +23,11 @@ public class AnswerProvider extends ContentProvider {
         // Matcher for see if the type is one element or all elements.
         private static UriMatcher URIMATCHER = new UriMatcher(UriMatcher.NO_MATCH);
         private static final int ANSWER_ID  = 1;
-        //private static final String ANSWER_ANSWER  = 2;
-        //private static final boolean ANSWER_CORRECT  =3;
+
         private static final int ANSWER_ALL = 2;
 
         private static final String MIME_ALL = "vnd.android.cursor.dir/vnd.android.flag.pt.challenge_it.quemquersermilionario.provider." + AnswerContract.TABLE;
         private static final String MIME_ONE = "vnd.android.cursor.item/vnd.android.flag.pt.challenge_it.quemquersermilionario.provider." + AnswerContract.TABLE;
-        // private static final String MIME_TWO = "vnd.android.cursor.item/vnd.android.flag.pt.challenge_it.quemquersermilionario.provider." + AnswerContract.TABLE;
-        //private static final String MIME_THREE = "vnd.android.cursor.item/vnd.android.flag.pt.challenge_it.quemquersermilionario.provider." + AnswerContract.TABLE;
-
 
 
         // DB Helper instance for access to SQLite DB.
@@ -41,7 +37,7 @@ public class AnswerProvider extends ContentProvider {
         {
             URIMATCHER.addURI(AUTHORITY, AnswerContract.TABLE+"/#", ANSWER_ID);
             URIMATCHER.addURI(AUTHORITY, AnswerContract.TABLE, ANSWER_ALL);
-            //URIMATCHER.addURI(AUTHORITY, AnswerContract.TABLE, ANSWER_QUESTION);
+
 
 
         }
@@ -116,7 +112,7 @@ public class AnswerProvider extends ContentProvider {
          * @pt Criação da base de dados com a tabela TEMPERATURE.
          * @author Challenge.IT
          */
-        private static class AnswerHelper extends SQLiteOpenHelper
+        /*private static class AnswerHelper extends SQLiteOpenHelper
         {
             public AnswerHelper(Context context)
             {
@@ -126,7 +122,7 @@ public class AnswerProvider extends ContentProvider {
             @Override
             public void onCreate(SQLiteDatabase sqLiteDatabase)
             {
-                String columns = AnswerContract._IDANSWER + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                String columns = AnswerContract.ID_ANSWER + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                         AnswerContract.ANSWER + " REAL NOT NULL" AnswerContract.CORRECT + " REAL NOT NULL" ;
 
                 String sql = "CREATE TABLE IF NOT EXISTS " + AnswerContract.TABLE + " (" + columns + ")";
@@ -138,5 +134,5 @@ public class AnswerProvider extends ContentProvider {
             {
                 // no need to implement this method, just when we want to update the database
             }
-        }
+        }*/
     }

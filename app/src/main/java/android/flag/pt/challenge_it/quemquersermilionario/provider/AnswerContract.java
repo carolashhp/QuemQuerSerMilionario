@@ -9,8 +9,9 @@ public class AnswerContract {
     public static final String TABLE = "ANSWER";
 
     // columns names
-    public static final String _IDQUESTION = BaseColumns._ID;
-    public static final String _IDANSWER = BaseColumns._ID;
+    public static final String ID_QUESTION = "Question_ID";
+    public static final String ID_ANSWER = BaseColumns._ID;
+    public static final String ABC = "abc";
     public static final String ANSWER = "answer";
     public static final String CORRECT = "correct";
 
