@@ -27,26 +27,26 @@ public class JogarManager {
             values.put(QuestionContract.ID_QUESTION, q.getId());
             values.put(QuestionContract.QUESTION, q.getQuestion());
 
+                ArrayList<Answer>y= q.getAnswers();
 
-            for( Answer y : q.getAnswers()){
 
-                values.put(AnswerContract.ID_ANSWER, y.getId());
-                values.put(AnswerContract.ANSWER, y.getAnswer());
-                values.put(AnswerContract.CORRECT, y.getCorrect());
+                values.put(AnswerContract.ID_ANSWER_A, y.get(0).getId());
+                values.put(AnswerContract.ANSWER_A, y.get(0).getAnswer());
+                values.put(AnswerContract.CORRECT_A, y.get(0).getCorrect());
 
-                values.put(AnswerContract.ID_ANSWER, y.getId());
-                values.put(AnswerContract.ANSWER, y.getAnswer());
-                values.put(AnswerContract.CORRECT, y.getCorrect());
+                values.put(AnswerContract.ID_ANSWER_B, y.get(1).getId());
+                values.put(AnswerContract.ANSWER_B, y.get(1).getAnswer());
+                values.put(AnswerContract.CORRECT_B, y.get(1).getCorrect());
 
-                values.put(AnswerContract.ID_ANSWER, y.getId());
-                values.put(AnswerContract.ANSWER, y.getAnswer());
-                values.put(AnswerContract.CORRECT, y.getCorrect());
+                values.put(AnswerContract.ID_ANSWER_C, y.get(2).getId());
+                values.put(AnswerContract.ANSWER_C, y.get(2).getAnswer());
+                values.put(AnswerContract.CORRECT_C, y.get(2).getCorrect());
 
-                values.put(AnswerContract.ID_ANSWER, y.getId());
-                values.put(AnswerContract.ANSWER, y.getAnswer());
-                values.put(AnswerContract.CORRECT, y.getCorrect());
+                values.put(AnswerContract.ID_ANSWER_D, y.get(3).getId());
+                values.put(AnswerContract.ANSWER_D, y.get(3).getAnswer());
+                values.put(AnswerContract.CORRECT_D, y.get(3).getCorrect());
 
-            }
+
             _context.getContentResolver().insert(QuestionContract.CONTENT_PROVIDER, values);
 
 
@@ -76,8 +76,9 @@ public class JogarManager {
 
             }
             answersCursor.close();
-            questions.add(new Question(questionsCursor.getString(questionsCursor.getColumnIndex(QuestionContract.ID_QUESTION)),
-                      questionsCursor.getString(questionsCursor.getColumnIndex(QuestionContract.QUESTION));
+            questions.add(new Question(questionsCursor.getInt(questionsCursor.getColumnIndex(QuestionContract.ID_QUESTION)),
+                    questionsCursor.getString(questionsCursor.getColumnIndex(QuestionContract.QUESTION)),
+                    answers));
         }
         questionsCursor.close();
 

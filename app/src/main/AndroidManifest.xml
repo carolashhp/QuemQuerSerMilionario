@@ -26,13 +26,13 @@
 
         <provider
             android:name=".provider.AnswerProvider"
-            android:authorities="android.flag.pt.challenge_it.quemquersermilionario.provider"
+            android:authorities="android.flag.pt.challenge_it.quemquersermilionario.provider.answerprovider"
             android:enabled="true"
             android:exported="false" >
         </provider>
         <provider
             android:name=".provider.QuestionProvider"
-            android:authorities="android.flag.pt.challenge_it.quemquersermilionario.provider.QuestionProvider"
+            android:authorities="android.flag.pt.challenge_it.quemquersermilionario.provider.questionprovider"
             android:enabled="true"
             android:exported="false" >
         </provider>

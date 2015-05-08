@@ -9,7 +9,8 @@ public class QuestionContract {
     public static final String TABLE = "QUESTION";
 
     // columns names
-    public static final String ID_QUESTION = BaseColumns._ID;
+    public static final String ID = BaseColumns._ID;
+    public static final String ID_QUESTION = "ID_Question";
     public static final String QUESTION = "question";
 
     // content URI for subset of provided data from temperature provider.

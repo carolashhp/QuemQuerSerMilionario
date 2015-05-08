@@ -16,14 +16,16 @@ public class JogarHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase)
     {
-        String columns = QuestionContract.ID_QUESTION + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+        String columns = QuestionContract.ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                QuestionContract.ID_QUESTION + " TEXT NOT NULL, " +
                 QuestionContract.QUESTION + " TEXT NOT NULL";
 
         String sql = "CREATE TABLE IF NOT EXISTS " + QuestionContract.TABLE + " (" + columns + ")";
         sqLiteDatabase.execSQL(sql);
 
-        String answersColumns = AnswerContract.ID_ANSWER + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                AnswerContract.ABC + " TEXT NOT NULL, " +
+        String answersColumns = AnswerContract.ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                AnswerContract.ID_ANSWER + " TEXT NOT NULL, " +
+                AnswerContract.ID_QUESTION + " TEXT NOT NULL, " +
                 AnswerContract.ANSWER + " TEXT NOT NULL, " + AnswerContract.CORRECT + " INTEGER NOT NULL" ;
 
         String answersSql = "CREATE TABLE IF NOT EXISTS " + AnswerContract.TABLE + " (" + columns + ")";

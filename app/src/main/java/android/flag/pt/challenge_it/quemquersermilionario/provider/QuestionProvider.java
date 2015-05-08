@@ -8,6 +8,7 @@ import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.flag.pt.challenge_it.quemquersermilionario.Model.Answer;
 import android.net.Uri;
 
 public class QuestionProvider extends ContentProvider {
@@ -59,7 +60,33 @@ public class QuestionProvider extends ContentProvider {
             try
             {
                 long row = db.insert(QuestionContract.TABLE, null, values);
-                return (row != -1) ? null : ContentUris.withAppendedId(uri, row);
+                if (row != -1) return null;
+
+                ContentValues valuesA = new ContentValues();
+                valuesA.put(AnswerContract.ID_ANSWER, values.getAsString(AnswerContract.ID_ANSWER_A));
+                valuesA.put(AnswerContract.ANSWER, values.getAsString(AnswerContract.ANSWER_A));
+                valuesA.put(AnswerContract.CORRECT, values.getAsBoolean(AnswerContract.CORRECT_A) ? 1 : 0);
+                db.insert(AnswerContract.TABLE, null, valuesA);
+
+                ContentValues valuesB = new ContentValues();
+                valuesB.put(AnswerContract.ID_ANSWER, values.getAsString(AnswerContract.ID_ANSWER_B));
+                valuesB.put(AnswerContract.ANSWER, values.getAsString(AnswerContract.ANSWER_B));
+                valuesB.put(AnswerContract.CORRECT, values.getAsBoolean(AnswerContract.CORRECT_B) ? 1 : 0);
+                db.insert(AnswerContract.TABLE, null, valuesB);
+
+                ContentValues valuesC = new ContentValues();
+                valuesC.put(AnswerContract.ID_ANSWER, values.getAsString(AnswerContract.ID_ANSWER_C));
+                valuesC.put(AnswerContract.ANSWER, values.getAsString(AnswerContract.ANSWER_C));
+                valuesC.put(AnswerContract.CORRECT, values.getAsBoolean(AnswerContract.CORRECT_C) ? 1 : 0);
+                db.insert(AnswerContract.TABLE, null, valuesC);
+
+                ContentValues valuesD = new ContentValues();
+                valuesD.put(AnswerContract.ID_ANSWER, values.getAsString(AnswerContract.ID_ANSWER_D));
+                valuesD.put(AnswerContract.ANSWER, values.getAsString(AnswerContract.ANSWER_D));
+                valuesD.put(AnswerContract.CORRECT, values.getAsBoolean(AnswerContract.CORRECT_D) ? 1 : 0);
+                db.insert(AnswerContract.TABLE, null, valuesD);
+
+                return ContentUris.withAppendedId(uri, row);
             }
             finally
             {
