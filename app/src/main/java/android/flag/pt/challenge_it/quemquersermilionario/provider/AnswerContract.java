@@ -33,7 +33,7 @@ public class AnswerContract {
     public static final String CORRECT_D = "correct_D";
 
 
-    // content URI for subset of provided data from temperature provider.
+    // content URI for subset of provided data from answers provider.
     public static Uri CONTENT_PROVIDER = Uri.withAppendedPath(AnswerProvider.CONTENT_URI, TABLE);
 }
 

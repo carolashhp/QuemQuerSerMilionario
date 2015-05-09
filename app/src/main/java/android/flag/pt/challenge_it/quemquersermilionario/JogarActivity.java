@@ -23,12 +23,16 @@ import java.util.ArrayList;
 
 public class JogarActivity extends ActionBarActivity {
 
+    private CursorAdapter _adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        new JogarAsyncTask().execute();
 
         JogarManager manager = new JogarManager(this);
 
@@ -76,5 +80,102 @@ public class JogarActivity extends ActionBarActivity {
         });
 
 
+    }
+
+    private class JogarAdapter extends CursorAdapter
+    {
+        /**
+
+         *
+         * @pt Construtor de Adapter que recebe o cursor com a informação a colocar na listagem de temperaturas.
+         */
+        public JogarAdapter(Cursor cursor)
+        {
+            super(JogarActivity.this, cursor, CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
+        }
+
+        @Override
+        public boolean areAllItemsEnabled()
+        {
+            return true;
+        }
+
+        @Override
+        public boolean isEnabled(int position)
+        {
+            return true;
+        }
+
+        @Override
+        public void bindView(View v, final Context ctx, final Cursor cursor)
+        {
+            /**
+             * Affect values of temperatures in each row of list.
+             *
+             * @pt Afectar valores de cada linha de registo na vista da Activity.
+             */
+
+
+            ((TextView) v.findViewById(R.id.txtQuestion))
+                .setText(cursor.getString(cursor.getColumnIndex(QuestionContract.QUESTION)));
+
+        }
+
+        @Override
+        public View newView(Context ctx, Cursor cursor, ViewGroup vg)
+        {
+            return getLayoutInflater().inflate(R.layout.activity_jogar, null);
+        }
+    }
+
+
+    private class JogarAsyncTask extends AsyncTask<Void, Void, Cursor>
+    {
+        @Override
+        protected Cursor doInBackground(Void... params)
+        {
+            /**
+             * Make the query. Start managing cursor and return it.
+             *
+             * @pt Realizar o pedido ao ContentProvider da listagem das questões.
+             */
+            Cursor QuestionCursor = getContentResolver().query(QuestionContract.CONTENT_PROVIDER, null, null, null, null);
+            Cursor AnswerCursor = getContentResolver().query(AnswerContract.CONTENT_PROVIDER, null, null, null, null);
+
+            /**
+             * Tells that the MailActivity controls the life-cycle of the cursor.
+             *
+             * @pt Delegar na Activity responsabilidade de controlar o tempo de vida do cursor com os dados.
+             */
+            startManagingCursor(QuestionCursor);
+            return QuestionCursor;
+        }
+
+        @Override
+        protected void onPostExecute(Cursor cursor) {
+            super.onPostExecute(cursor);
+            /**
+             * If is the first time, creates the adapter.
+             *
+             * @pt Se foi a primeira chamada, criar o adapter com os dados do cursor.
+             */
+            /*if(_adapter == null)
+            {
+                _adapter = new JogarAdapter(cursor);
+                // Set adapter in the list.
+                JogarActivity.this.setAdapter(_adapter);
+            }
+            /**
+             * If the adapter already exists, swap the cursor in adapter.
+             *
+             * @pt Se já existir, colocar o novo cursor com possíveis novos dados.
+             */
+            /*else
+            {
+                // Stop using the old version of the temperatures in the cursor.
+                stopManagingCursor(_adapter.getCursor());
+                _adapter.changeCursor(cursor);
+            }*/
+        }
     }
 }

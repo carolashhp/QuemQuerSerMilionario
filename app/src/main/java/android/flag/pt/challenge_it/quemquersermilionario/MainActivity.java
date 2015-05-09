@@ -22,6 +22,7 @@ public class MainActivity extends ActionBarActivity {
             public void onClick(View view) {
 
                 startService(new Intent(getApplicationContext(), JogarIntentService.class));
+                //startActivity(new Intent(getApplicationContext(), JogarActivity.class));
 
 
 

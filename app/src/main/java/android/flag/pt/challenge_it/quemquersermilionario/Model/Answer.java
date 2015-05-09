@@ -1,8 +1,5 @@
 package android.flag.pt.challenge_it.quemquersermilionario.Model;
 
-/**
- * Created by Formando FLAG on 04-05-2015.
- */
 public class Answer {
 
     private final String id;
